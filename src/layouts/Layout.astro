@@ -120,6 +120,24 @@ const { title = siteData.title, description = siteData.description } = Astro.pro
         document.body.classList.toggle('page-hidden', document.hidden);
       });
     </script>
+    <script is:inline>
+      (function () {
+        var savedTheme = null;
+        window.addEventListener('beforeprint', function () {
+          try {
+            var key = document.documentElement.dataset.themeKey || 'portfolio-theme';
+            savedTheme = localStorage.getItem(key);
+          } catch {}
+          document.documentElement.removeAttribute('data-theme');
+        });
+        window.addEventListener('afterprint', function () {
+          if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+          savedTheme = null;
+        });
+      })();
+    </script>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>

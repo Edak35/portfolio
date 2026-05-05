@@ -30,6 +30,24 @@ function deviconFolder(filename) {
   return filename.replace(/\.svg$/, '').replace(/-(original|plain|line)(-wordmark)?$/, '');
 }
 
+// Build-time SSRF guard: only fetch images from known-good GitHub domains.
+const ALLOWED_IMAGE_HOSTS = new Set([
+  'raw.githubusercontent.com',
+  'user-images.githubusercontent.com',
+  'camo.githubusercontent.com',
+  'github.com',
+  'cdn.jsdelivr.net',
+]);
+
+function isAllowedImageUrl(url) {
+  try {
+    const { hostname } = new URL(url);
+    return ALLOWED_IMAGE_HOSTS.has(hostname);
+  } catch {
+    return false;
+  }
+}
+
 // Maps a local /public icon path to its jsdelivr CDN source URL.
 // Returns null for paths not covered by a known CDN mapping (caller logs a warning and skips).
 function cdnUrlFor(localPath) {
@@ -330,6 +348,8 @@ async function ensureProjectImages() {
       mkdirSync(dirname(destFile), { recursive: true });
       try {
         if (!imgData) {
+          if (!isAllowedImageUrl(imageUrl))
+            throw new Error(`blocked: host not in allowlist (${new URL(imageUrl).hostname})`);
           const imgRes = await fetch(imageUrl);
           if (!imgRes.ok) throw new Error(`HTTP ${imgRes.status}`);
           imgData = Buffer.from(await imgRes.arrayBuffer());
@@ -342,6 +362,7 @@ async function ensureProjectImages() {
       }
     }
   }
+
 
   try {
     writeFileSync(cachePath, JSON.stringify(updatedCache, null, 2) + '\n');

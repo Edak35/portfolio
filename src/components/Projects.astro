@@ -10,13 +10,14 @@ const { featuredOnly = false } = Astro.props;
 
 const allProjectsData = await augmentProjectsWithImages(projectsData as ProjectEntry[]);
 const displayProjects = featuredOnly
-  ? allProjectsData.filter((p) => p.featuredImage)
+  ? allProjectsData.filter((p) => p.sliderImage)
   : allProjectsData;
 
 import { icons } from '../lib/icons';
 
 // Filter values must match the `category` field used in projects.json entries.
 const filters = [
+  { label: 'Featured', value: 'featured' },
   { label: 'All', value: 'all' },
   { label: 'Infrastructure', value: 'infrastructure' },
   { label: 'DevOps', value: 'devops' },
@@ -28,7 +29,7 @@ const filters = [
 const projectsJson = JSON.stringify(
   allProjectsData.map((p) => ({
     ...p,
-    featuredImage:   p.featuredImage   ? withBase(p.featuredImage)   : p.featuredImage,
+    sliderImage:   p.sliderImage   ? withBase(p.sliderImage)   : p.sliderImage,
     backgroundImage: p.backgroundImage ? withBase(p.backgroundImage) : p.backgroundImage,
   }))
 );
@@ -47,7 +48,7 @@ const projectsJson = JSON.stringify(
           <button
             class="filter-btn"
             data-filter={f.value}
-            aria-pressed={f.value === 'all' ? 'true' : 'false'}
+            aria-pressed={f.value === 'featured' ? 'true' : 'false'}
           >
             {f.label}
             <span class="filter-count" data-count={f.value} />
@@ -65,6 +66,7 @@ const projectsJson = JSON.stringify(
           <div
             class={`project-card reveal${project.backgroundImage ? ' has-bg' : ''}`}
             data-category={project.category}
+            data-featured={(project as any).featured ? 'true' : 'false'}
             data-index={i}
             style={`transition-delay: ${(i % 3) * 0.07}s;`}
             role="button"
@@ -243,12 +245,14 @@ const projectsJson = JSON.stringify(
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.project-card[data-category]');
   const empty = document.getElementById('projects-empty');
-  let active = 'all';
+  let active = null;
 
   document.querySelectorAll('.filter-count').forEach((el) => {
     const cat = el.dataset.count;
-    const n =
-      cat === 'all' ? cards.length : [...cards].filter((c) => c.dataset.category === cat).length;
+    let n;
+    if (cat === 'all') n = cards.length;
+    else if (cat === 'featured') n = [...cards].filter((c) => c.dataset.featured === 'true').length;
+    else n = [...cards].filter((c) => c.dataset.category === cat).length;
     el.textContent = `${n}`;
   });
 
@@ -262,7 +266,10 @@ const projectsJson = JSON.stringify(
     });
     let visible = 0;
     cards.forEach((card) => {
-      const matches = filter === 'all' || card.dataset.category === filter;
+      const matches =
+        filter === 'all' ||
+        (filter === 'featured' && card.dataset.featured === 'true') ||
+        card.dataset.category === filter;
       card.classList.remove('pf-enter');
       if (!matches) {
         card.classList.add('pf-hidden');
@@ -282,7 +289,9 @@ const projectsJson = JSON.stringify(
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
   });
-  document.querySelector('[data-filter="all"]')?.classList.add('filter-active');
+
+  applyFilter('featured');
+  document.querySelector('[data-filter="featured"]')?.classList.add('filter-active');
 
   const modal = document.getElementById('project-modal');
   const container = document.getElementById('modal-container');
@@ -301,7 +310,7 @@ const projectsJson = JSON.stringify(
     const p = projects[idx];
     if (!p) return;
 
-    const img = p.featuredImage || p.backgroundImage || null;
+    const img = p.backgroundImage || null;
     if (img) {
       modalHero.style.backgroundImage = `url('${img}')`;
       modalHero.style.display = '';

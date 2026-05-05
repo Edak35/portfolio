@@ -26,14 +26,20 @@ Portfolio template built with Astro. All your content lives in simple JSON files
 
 ## Quick Start
 
-**With Docker (recommended):**
+
+* * *
+
+### With Docker (recommended):
 
 ```bash
 # Build and output the site to ./output/
 docker compose build && docker compose up
 ```
 
-**Without Docker:**
+
+* * *
+
+### Without Docker:
 
 ```bash
 npm install
@@ -50,6 +56,46 @@ GITHUB_TOKEN=ghp_xxxx
 ```
 
 `.env` is in `.gitignore` — safe for local dev. The Docker secrets path (`secrets/github_token_password.txt`) is used when building with `docker compose`.
+
+
+* * *
+
+### Deploying to GitHub Pages (easist):
+
+#### 1. Get your own GitHub repository setup
+
+Fork / Clone / Use this template
+
+
+#### 2. Enable Pages in your repo settings
+
+Go to **Settings → Pages → Build and deployment → Source** and switch it from "Deploy from a branch" to **GitHub Actions**. 
+
+Wait for the page to refresh — GitHub's doing something, probably.
+
+
+#### 3. Trigger your first deploy
+
+Click **Actions** in the top nav (right under your repo name). In the left sidebar you'll see a workflow called **Deploy to GitHub Pages** — click it.
+
+You'll notice nothing is happening. Look for the **Run workflow** button on the right side of the page, click it, then click the green **Run workflow** button that appears. Yes, there are two clicks.
+
+
+#### 4. Watch it go
+
+You'll be redirected to a new screen showing the workflow running in real time. When it finishes:
+
+- **Green checkmark** — your site is live. 
+
+- Click on the **Deploy** job in the workflow run
+
+- **Red X** — you probably skipped step 1. Go back and flip that Pages source to **GitHub Actions**.
+
+- If not, expand the **Complete job** accordion at the bottom of the log. Your URL will be waiting there:
+
+```
+Evaluated environment url: https://your-username.github.io/your-repo-name/
+```
 
 ---
 

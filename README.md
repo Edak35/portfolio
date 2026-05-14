@@ -1282,6 +1282,33 @@ Builds the social link array rendered throughout the site from `personal.json`.
 
 ---
 
+## npm Audit — Known Vulnerabilities (v1.3.3)
+
+All vulnerabilities listed here are **build-time only**. This project produces a fully static site — no Node.js, no npm packages, and none of these dependency trees ship to end users. What gets deployed is plain HTML, CSS, and JavaScript written by Astro; the packages below exist solely in the build container and are discarded when it exits.
+
+### 1 HIGH — `fast-uri` ≤ 3.1.1
+
+Two advisories in one package:
+
+- Path traversal via percent-encoded dot segments — [GHSA-q3j6-qgpj-74h6](https://github.com/advisories/GHSA-q3j6-qgpj-74h6)
+- Host confusion via percent-encoded authority delimiters — [GHSA-v39h-62p7-jpjc](https://github.com/advisories/GHSA-v39h-62p7-jpjc)
+
+### 5 MODERATE — `yaml` 2.0.0–2.8.2
+
+Stack overflow via deeply nested YAML collections — [GHSA-48c2-rrv3-qjmp](https://github.com/advisories/GHSA-48c2-rrv3-qjmp). One root cause, five affected packages in the chain:
+
+```
+yaml  (vulnerable)
+  └── yaml-language-server
+        └── volar-service-yaml
+              └── @astrojs/language-server
+                    └── @astrojs/check ≥ 0.9.3
+```
+
+> Since this chain is never invoked at runtime and untrusted YAML is never fed into the language server during the build, the exploitability is zero in this context. (sorry i18n ppl)
+
+---
+
 ## OWASP ASVS Compliance
 
 This is a statically generated site with no server-side processing, no user accounts, no database, and no dynamic request handling. The [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/www-project-application-security-verification-standard/) is the industry reference for web application security requirements.

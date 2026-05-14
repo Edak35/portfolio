@@ -75,7 +75,25 @@ Fork / Clone / Use this template
 
 * * *
 
-#### 2. Enable Pages in your repo settings
+#### 2. Name your repository carefully — it controls your URL
+
+The repository name you choose determines where GitHub serves your site, and you can't change it without redeploying.
+
+| Repo name | What you get |
+| --------- | ------------ |
+| `your-username.github.io` | Site served at **`https://your-username.github.io/`** — clean root URL, no subdirectory |
+| Anything else (e.g. `my-portfolio`) | Site served at **`https://your-username.github.io/my-portfolio/`** — the repo name becomes a subdirectory |
+
+**The `.github.io` name is the special one.** GitHub reserves it as your personal Pages site and serves it from the root. Every other repo name becomes a path prefix.
+
+If your site looks broken with missing styles or images after deploying, the most common cause is a mismatch here — the build expected `/` but GitHub is serving it from `/my-portfolio/`. The CI workflow auto-detects this, but double-check that `BASE_PATH` in your repo variables matches reality.
+
+> **Tip:** If you only want one portfolio site and a clean URL, name the repo `your-username.github.io` from the start. You can always rename later, but you'll need to retrigger a deploy.
+
+
+* * *
+
+#### 3. Enable Pages in your repo settings
 
 Go to **Settings → Pages → Build and deployment → Source** and switch it from "Deploy from a branch" to **GitHub Actions**. 
 
@@ -84,7 +102,7 @@ Wait for the page to refresh — GitHub's doing something, probably.
 
 * * *
 
-#### 3. Trigger your first deploy
+#### 4. Trigger your first deploy
 
 Click **Actions** in the top nav (right under your repo name). In the left sidebar you'll see a workflow called **Deploy to GitHub Pages** — click it.
 
@@ -93,7 +111,7 @@ You'll notice nothing is happening. Look for the **Run workflow** button on the 
 
 * * *
 
-#### 4. Watch it go
+#### 5. Watch it go
 
 You'll be redirected to a new screen showing the workflow running in real time. When it finishes:
 
@@ -111,6 +129,30 @@ Evaluated environment url: https://your-username.github.io/your-repo-name/
 
 ---
 
+## You Don't Have to Use Every Section
+
+This theme ships with every section enabled — but your site doesn't need all of them. If you don't have client work, skip the Portfolio section. No certifications yet? Remove that section. Running a one-person shop with no service sites to showcase? Cut Services entirely.
+
+To remove a section, open `src/pages/index.astro` and delete the corresponding component from the `<Layout>`. That's it — no JSON to clean up, no broken references, no config flags.
+
+```astro
+<!-- Remove or comment out any section you don't need -->
+<Layout>
+  <Hero />
+  <About />
+  <Expertise />
+  <!-- <Portfolio /> -->   <!-- removed: no client work yet -->
+  <Projects />
+  <!-- <Certifications /> --> <!-- removed: nothing to list -->
+  <Services />
+  <Contact />
+</Layout>
+```
+
+Also remove the corresponding entry from `src/data/menu.json` so the nav link doesn't appear either. Fewer sections = less to fill in, and a tighter site.
+
+---
+
 ## Data Files
 
 All content lives in `src/data/`. Edit these JSON files to update any part of the site:
@@ -120,7 +162,7 @@ All content lives in `src/data/`. Edit these JSON files to update any part of th
 | `personal.json` | Name, bio, contact info, social links, hero role, photo |
 | `site.json` | Site title, SEO description, Web3Forms key, nav links, services cards |
 | `expertise.json` | Four focus-area cards in the Expertise section |
-| `skills.json` | Tech & tool categories with logos |
+| `skills.json` | Tech & tool categories — each skill has a single `icon` field; icons are downloaded at build time and served locally |
 | `portfolio.json` | Client work carousel (multi-slide projects) |
 | `projects.json` | Personal project cards with optional GitHub image fetching |
 | `certifications.json` | Credentials and training timeline |
@@ -295,6 +337,7 @@ This drives your name, bio, contact info, and every social link across the entir
 - Social fields left empty (`""`) are automatically hidden — no broken links
 - `heroSocialLinks` controls which icons appear on the hero. Options: `github`, `linkedin`, `gitlab`, `twitter`, `instagram`, `youtube`, `twitch`, `telegram`, `signal`, `blog`, `reddit`, `hackernews`, `lobsters`, `discogs`, `codepen`, `jsfiddle`, `facebook`
 - `photo` is a path relative to `public/` — drop your image at `public/images/personal/portrait.png`
+- **Don't want a portrait?** Just delete `public/images/personal/portrait.png` (or don't add one). The build detects whether the file exists and silently skips the portrait element — no broken image, no layout shift, no code changes needed. You can also point `photo` at an external URL (e.g. a GitHub avatar) and it will be used directly without a local file check.
 
 ---
 
@@ -380,51 +423,132 @@ The `serviceSites` array in `site.json` controls the two showcase cards in the S
 
 ### `src/data/expertise.json` — What you do
 
-Four cards displayed in the Expertise section. Replace the titles and descriptions with your actual focus areas.
+Four cards displayed in the Expertise section. Each card gets an icon, a heading, and a short description.
 
 ```json
-[
-  {
-    "key": "design",
-    "title": "Design & Art Direction",
-    "description": "Visual identity, layout, typography, and the decisions that make people stop and look twice."
-  },
-  {
-    "key": "webdev",
-    "title": "Web Design & Development",
-    "description": "From wireframe to deployment — sites that look considered, perform well, and give visitors what they came for."
-  }
-]
+{
+  "items": [
+    {
+      "key": "sysadmin",
+      "icon": "server-stack",
+      "title": "Design & Art Direction",
+      "description": "Visual identity, layout, typography, and the aesthetic decisions that make people stop and look twice."
+    },
+    {
+      "key": "webdev",
+      "icon": "code-bracket-square",
+      "title": "Web Design & Development",
+      "description": "From wireframe to deployment — building sites and apps that look considered, perform well, and give visitors exactly what they came for."
+    },
+    {
+      "key": "freelance",
+      "icon": "user-circle",
+      "title": "Creative Freelance",
+      "description": "Independent project work in photography, video, 3D, illustration, or wherever the brief leads."
+    },
+    {
+      "key": "leadership",
+      "icon": "users",
+      "title": "Collaboration & Direction",
+      "description": "Working alongside teams, clients, and stakeholders to take a project from idea to shipped."
+    }
+  ]
+}
 ```
+
+**Item fields:**
+
+- `key` — an identifier string for the card (not used for visual selection — just a label)
+- `icon` — a key from `src/lib/icons.ts` (Heroicon SVG paths). Common values: `"server-stack"`, `"code-bracket-square"`, `"user-circle"`, `"users"`, `"cpu-chip"`, `"command-line"`, `"sparkles"`, `"rocket-launch"`, `"light-bulb"`, `"shield-check"`. If the key is missing or unrecognised, the card falls back to the `"sparkles"` icon.
+- `iconifyIcon` — optional alternative to `icon`. Accepts an Iconify identifier (e.g. `"devicon:figma"`, `"mdi:server"`). Takes priority over `icon` when set. Browse icons at [icon-sets.iconify.design](https://icon-sets.iconify.design).
+- `title` — the card heading
+- `description` — the card body text
 
 ---
 
 ### `src/data/skills.json` — Tech & tools
 
-An array of skill categories, each with a list of tools. Icons are stored locally in `public/icons/devicons/` — find any icon name at [devicons.dev](https://devicons.dev).
+Skill categories displayed in the Skills section. Each skill has a single `icon` field. Icons are downloaded at build time and served from your own domain — no CDN requests reach visitors' browsers.
 
 ```json
-[
-  {
-    "title": "Design & Illustration",
-    "skills": [
-      { "name": "Figma", "logo": "/icons/devicons/figma-original.svg" },
-      { "name": "Photoshop", "logo": "/icons/devicons/photoshop-line.svg" }
-    ]
+{
+  "section": {
+    "eyebrow": "What I work with",
+    "heading": "Technical Arsenal"
   },
-  {
-    "title": "Web & Frontend",
-    "skills": [
-      { "name": "TypeScript", "logo": "/icons/devicons/typescript-original.svg" },
-      { "name": "React", "logo": "/icons/devicons/react-original.svg" }
-    ]
-  }
-]
+  "categories": [
+    {
+      "title": "Design & Illustration",
+      "skills": [
+        { "name": "Figma",   "icon": "devicon:figma" },
+        { "name": "Blender", "icon": "devicon:blender" }
+      ]
+    },
+    {
+      "title": "Web & Frontend",
+      "skills": [
+        { "name": "TypeScript", "icon": "devicon:typescript" },
+        { "name": "React",      "icon": "devicon:react" }
+      ]
+    }
+  ]
+}
 ```
 
-Add or remove categories freely — the grid adapts automatically.
+- `section.eyebrow` / `section.heading` — the section label and title. Change these without touching any `.astro` file.
+- `icon` — identifies the icon to display. Accepts two formats:
 
-> **Adding a new icon:** use the path format `/icons/devicons/{name}.svg` where `{name}` matches the devicons filename (e.g. `vue-original.svg`). The build script (`scripts/download-assets.mjs`) runs automatically before every `npm run build` and `npm run dev`, checks for any icon paths in the JSON that don't have a corresponding file in `public/`, and downloads only the missing ones from the jsdelivr CDN. Files already present are never re-fetched. If a download fails, the build logs a warning and continues.
+---
+
+#### Format 1 — Iconify identifier (recommended)
+
+```json
+{ "name": "Figma", "icon": "devicon:figma" }
+```
+
+Write `prefix:name` — the build script downloads the SVG from the Iconify API before the Astro build runs and saves it to `public/images/icons/devicon/figma.svg`. The file is only downloaded if it doesn't already exist, so custom icons you place manually are never overwritten.
+
+Browse every available icon at [icon-sets.iconify.design](https://icon-sets.iconify.design). Useful prefixes:
+
+| Prefix | Color? | Best for | Example |
+|--------|--------|----------|---------|
+| `simple-icons:` | Monochrome | Tech brand logos — most comprehensive | `simple-icons:docker` |
+| `devicon:` | Full color | Dev-specific tech logos | `devicon:figma` |
+| `devicon-plain:` | Monochrome | Same as devicon, no color fill | `devicon-plain:figma` |
+| `logos:` | Full color | Colored brand logos | `logos:react` |
+| `mdi:` | Monochrome | Generic or concept icons | `mdi:server` |
+| `skill-icons:` | Full color | Polished dev-skill display | `skill-icons:typescript` |
+
+**Icons are full color by default** because `devicon:` uses official brand colors. To switch to monochrome, change the prefix — the icon name itself stays the same:
+
+```json
+{ "name": "Figma",      "icon": "devicon:figma"           }   ← full color (default)
+{ "name": "Figma",      "icon": "simple-icons:figma"      }   ← monochrome (white/black)
+{ "name": "TypeScript", "icon": "devicon:typescript"      }   ← full color (default)
+{ "name": "TypeScript", "icon": "simple-icons:typescript" }   ← monochrome
+{ "name": "Docker",     "icon": "devicon:docker"          }   ← full color (default)
+{ "name": "Docker",     "icon": "simple-icons:docker"     }   ← monochrome
+```
+
+Mix and match per skill — you can use a colored prefix for some and monochrome for others. The icon tile already has a neutral white background so colored icons display correctly in both light and dark themes.
+
+> **Offline builds:** if the build runs without a network connection, any icon not already on disk is skipped with a warning. The build completes — only those icons are missing from the page. Run the build once with a connection to warm the cache; subsequent offline builds use what's already downloaded.
+
+---
+
+#### Format 2 — Local path (for custom icons, including PNG)
+
+```json
+{ "name": "My App", "icon": "/images/icons/custom/myapp.png" }
+```
+
+Use any path starting with `/`. The file must exist in `public/` before the build runs — the build script does not download local-path icons. This format supports any image type: SVG, PNG, WebP, etc.
+
+Example: place `myapp.png` in `public/images/icons/custom/` and reference it as `/images/icons/custom/myapp.png`. Useful when only a PNG is available for a proprietary or internal tool.
+
+---
+
+Add or remove categories freely — the grid adapts automatically. To add a skill, append a new object with `name` and `icon`. The build downloads any missing Iconify SVGs automatically on the next `npm run dev` or `npm run build`.
 
 ---
 
@@ -456,39 +580,116 @@ These are the big showcase pieces displayed in the Portfolio carousel. Each proj
 
 ### `src/data/projects.json` — Personal projects & experiments
 
-Displayed as cards in the Projects section. Set `githubRepo` to auto-fetch a cover image from that repo's README at build time.
+Displayed in the Projects section. The outer object controls which layout the section uses; `items` holds the project list.
+
+---
+
+#### Choosing a layout — this is the most important setting in this file
+
+The `"layout"` key at the top of `projects.json` determines which component renders your Projects section, default is `grid`. The two options look and behave very differently, so pick based on how many projects you have:
+
+| How many projects? | Recommended layout | Why |
+| ------------------ | ------------------ | --- |
+| **5 or fewer** | `"showcase"` | Each project gets a full-width feature card with a large hero image, thumbnail gallery, and prominent CTA. Works beautifully when every project deserves individual attention — too much whitespace with a long list. |
+| **6 or more** | `"grid"` | Compact 3-column card grid with category filter buttons (Featured / All / by category). Scales cleanly to any number of projects and lets visitors self-sort by interest. |
+
+> **Rule of thumb:** fewer projects → `"showcase"` for impact. Many projects → `"grid"` for scannability.
+
+To switch layouts, change **one value** in `projects.json`:
 
 ```json
-[
-  {
-    "title": "Photography Workflow App",
-    "featured": true,
-    "resume": true,
-    "company": "Side Project",
-    "category": "web",
-    "description": "A lightweight local app for managing shoot intake, selects, and client delivery.",
-    "tags": ["React", "SQLite", "Node.js"],
-    "icon": "eye",
-    "link": "https://yourproject.com",
-    "githubRepo": "photo-workflow",
-    "sliderImage": "/images/projects/web-app.jpg",
-    "sliderOrder": 1,
-    "backgroundImage": "/images/projects/web-app.jpg",
-    "colorIcon": "/icons/materialdesign/camera-outline.svg"
-  }
-]
+{ "layout": "showcase" }   ← ProjectsShowcase.astro  (≤5 projects, big feature cards)
+{ "layout": "grid"     }   ← ProjectsGrid.astro      (6+ projects, filterable card grid)
 ```
 
-- `featured` — set to `true` to include the project in the **Featured** filter, which is the default active filter when the Projects section loads. Omit or set to `false` to exclude it from that filter (the project is still visible under "All" or its category).
-- `resume` — set to `true` to include the project in the **Notable Projects** section of the printable resume. Omit or set to `false` to keep it off the resume.
-- `sliderImage` — path to the image shown in the **hero section carousel** (e.g. `/images/projects/web-app.jpg`). Only projects with a `sliderImage` appear in the hero slider — omit the field entirely to exclude a project from the carousel.
-- `sliderOrder` — integer controlling the project's position in the hero carousel. Lower numbers appear first (`1` before `2`, etc.). Projects without this field sort to the end of the carousel.
-- `githubRepo` — the repo name (not the full URL). If set, the build reads that repo's README and extracts the first non-badge image as the project cover, overriding `sliderImage`. Leave as `""` to use `sliderImage` directly.
-- `icon` — a Heroicons name used as a fallback icon (e.g. `"eye"`, `"cpu-chip"`, `"document-text"`, `"command-line"`)
-- `colorIcon` — a locally cached icon file. Three CDN sources are supported; the build script auto-downloads any missing file before the Astro build runs:
-  - `/icons/devicons/{name}.svg` — [devicons.dev](https://devicons.dev) (technology logos)
-  - `/icons/materialdesign/{name}.svg` — [Templarian/MaterialDesign](https://materialdesignicons.com) on jsdelivr
-  - `/icons/dashboard-icons/{name}.png` — [homarr-labs/dashboard-icons](https://github.com/homarr-labs/dashboard-icons) on jsdelivr
+---
+
+**`"showcase"` layout — `ProjectsShowcase.astro`**
+
+Renders each project as a full-width horizontal feature card: large background image on one side, title / description / tags / CTA on the other. A thumbnail strip below the main image lets visitors browse screenshots without leaving the section. Best when you have a small, curated set of projects you want to present with weight.
+
+- `backgroundImage` — the main hero image for the card
+- `images` — up to three thumbnails shown below the main image (click to swap)
+- No filter buttons — all projects are always visible
+
+**`"grid"` layout — `ProjectsGrid.astro`**
+
+Renders projects as a filterable 3-column card grid. Filter buttons at the top let visitors switch between **Featured**, **All**, and any category you've used. Projects with `"featured": true` appear in the default Featured view. Scales to any number of projects without feeling cluttered.
+
+- `featured` — controls which projects show in the default Featured filter
+- `category` — the filter group the project belongs to (e.g. `"web"`, `"design"`, `"devops"`)
+- `backgroundImage` — the card cover image in grid mode
+
+---
+
+```json
+{
+  "layout": "showcase",
+  "items": [
+    {
+      "title": "Photography Workflow App",
+      "featured": true,
+      "resume": true,
+      "company": "Side Project",
+      "category": "web",
+      "description": "A lightweight local app for managing shoot intake, selects, and client delivery.",
+      "tags": ["React", "SQLite", "Node.js"],
+      "icon": "eye",
+      "link": "https://yourproject.com",
+      "githubRepo": "photo-workflow",
+      "sliderImage": "/images/projects/web-app.jpg",
+      "sliderOrder": 1,
+      "backgroundImage": "/images/projects/web-app.jpg",
+      "images": [
+        "/images/projects/web-app.jpg",
+        "/images/projects/web-app-detail.jpg"
+      ],
+      "colorIcon": "devicon:react"
+    }
+  ]
+}
+```
+
+**Item fields:**
+
+- `featured` — set to `true` to include the project in the **Featured** filter (grid layout). The default filter when the Projects section loads. Has no effect in showcase layout.
+- `resume` — set to `true` to include the project in the **Notable Projects** section of the printable resume.
+- `sliderImage` — path to the image shown in the **hero section carousel**. Projects with a `sliderImage` appear in the hero slider. If `githubRepo` is set and GitHub successfully fetches a README image, that image takes priority — otherwise `sliderImage` is used directly. Omit the field entirely to exclude a project from the carousel.
+- `sliderOrder` — integer controlling the project's position in the hero carousel. Lower numbers appear first (`1` before `2`, etc.). Projects without this field sort to the end.
+- `backgroundImage` — the card background image used in the showcase layout and as the fallback cover in grid mode.
+- `images` — array of image paths for the **showcase layout** thumbnail gallery (click to swap the main image). The first item is also the main image on load. Ignored in grid mode.
+- `githubRepo` — the repo name (not the full URL). If set and `GITHUB_USER` is configured, the build reads that repo's README and extracts the first non-badge image to use as the hero slider image. Leave as `""` to rely on `sliderImage` directly.
+- `icon` — a Heroicons name used as a fallback icon in the hero badge and showcase placeholder (e.g. `"eye"`, `"cpu-chip"`, `"document-text"`, `"command-line"`)
+- `colorIcon` — a colored icon displayed on the project card. Accepts the same two formats as the skills `icon` field:
+
+  **Format 1 — Iconify identifier (recommended):** `"devicon:react"`, `"devicon:docker"`, `"logos:astro"`, etc. The build script downloads the SVG from the Iconify API at build time and serves it locally — no CDN requests reach visitors. Use `devicon:` for full-color tech logos.
+
+  ```json
+  "colorIcon": "devicon:react"
+  ```
+
+  Browse icons at [icon-sets.iconify.design](https://icon-sets.iconify.design). Useful prefixes for project icons:
+
+  | Prefix | Color? | Best for |
+  |--------|--------|----------|
+  | `devicon:` | Full color | Tech stack logos — **best default** |
+  | `logos:` | Full color | Brand logos with broad coverage |
+  | `simple-icons:` | Monochrome | When you want a flat look |
+  | `mdi:` | Monochrome | Generic concept icons (no brand logo exists) |
+
+  **Format 2 — Local path:** Place any image in `public/` and reference it directly. Supports SVG, PNG, WebP, etc. The build script does not download local-path icons — you manage the file yourself.
+
+  ```json
+  "colorIcon": "/images/icons/custom/myapp.png"
+  ```
+
+  Legacy local-path formats still supported (build script auto-downloads if missing):
+  - `/images/icons/materialdesign/{name}.svg` — [Templarian/MaterialDesign](https://materialdesignicons.com) on jsdelivr
+  - `/images/icons/dashboard-icons/{name}.png` — [homarr-labs/dashboard-icons](https://github.com/homarr-labs/dashboard-icons) on jsdelivr
+
+- `category` — filter group in grid mode. Common values: `"web"`, `"devops"`, `"infrastructure"`, `"security"`, `"design"` — use any string you like.
+
+> **Hero slider not showing projects?** If the slider appears empty, check two things: (1) each project you want in the slider must have a `sliderImage` path set, and (2) the image file must exist at `public/images/projects/`. If `GITHUB_USER` is set to a real GitHub username and `githubRepo` matches a repo in your account, the build will fetch the README image and use it instead — but `sliderImage` is always the fallback so the slider works even without GitHub access.
 
 ---
 

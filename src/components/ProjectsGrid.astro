@@ -231,6 +231,7 @@ const projectsJson = JSON.stringify(
      is:inline is required alongside define:vars; without it Astro would bundle the script
      and the injected variable would not be in scope. -->
 <script is:inline define:vars={{ projectsJson }}>
+  // @ts-nocheck
   const projects = JSON.parse(projectsJson);
 
   document.querySelectorAll('#projects .reveal').forEach((el) => {

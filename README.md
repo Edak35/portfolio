@@ -16,6 +16,7 @@ Portfolio template built with Astro. All your content lives in simple JSON files
 | **Accessibility**      | Keyboard nav, ARIA labels, skip link, reduced-motion support          |
 | **Stack**              | Astro 6, Tailwind CSS 4, TypeScript, GitHub API + RSS                 |
 | **Requirements**       | Docker + Docker Compose, or Node 24+ with pnpm 11                     |
+| **Supply chain security** | pnpm 11 with script blocking, age-gated releases (7-day hold), exotic rejection, downgrade detection, and lockfile integrity - an upgrade script included |
 
 ---
 

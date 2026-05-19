@@ -1,6 +1,18 @@
 #astro build stuff
 .astro
 
+# source working files — processed copies live in public/
+_source/
+
+# large video files — host on YouTube/Vimeo for production
+public/videos/
+
+# downloaded at build time — do not commit
+public/images/icons/
+
+# npm lockfile — project uses pnpm
+package-lock.json
+
 # build output
 dist/
 .output/

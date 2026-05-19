@@ -1,28 +1,28 @@
 {
   "items": [
     {
-      "key": "sysadmin",
-      "icon": "server-stack",
-      "title": "Design & Art Direction",
-      "description": "Visual identity, layout, typography, and the aesthetic decisions that make people stop and look twice. Whether print or screen, the goal is the same — work that holds up."
+      "key": "thermal",
+      "icon": "fire",
+      "title": "Thermal Systems Design",
+      "description": "Thermodynamic modeling of combined cycles, waste heat recovery architectures, and cooling systems. Competitive experience designing closed loop thermal solutions for industrial and data center applications."
     },
     {
-      "key": "webdev",
-      "icon": "code-bracket-square",
-      "title": "Web Design & Development",
-      "description": "From wireframe to deployment — building sites and apps that look considered, perform well, and give visitors exactly what they came for."
+      "key": "structural",
+      "icon": "cube-transparent",
+      "title": "Structural Analysis and FEA",
+      "description": "Static and dynamic finite element analysis in SolidWorks Simulation. Analytical hand calculations, mesh convergence studies, spring element modeling, and factor of safety validation under real loading conditions."
     },
     {
-      "key": "freelance",
-      "icon": "user-circle",
-      "title": "Creative Freelance",
-      "description": "Independent project work in photography, video, 3D, illustration, or wherever the brief leads. Direct to work with, flexible, and invested in the outcome."
+      "key": "prototyping",
+      "icon": "wrench-screwdriver",
+      "title": "Hardware Prototyping",
+      "description": "Rapid prototyping from concept to physical build using CNC machining, lathe, mill, 3D printing, and laser cutting. Embedded systems integration with Arduino, ESP32, and Raspberry Pi."
     },
     {
-      "key": "leadership",
-      "icon": "users",
-      "title": "Collaboration & Direction",
-      "description": "Working alongside teams, clients, and stakeholders to take a project from idea to shipped — clear communication, honest timelines, and work that actually gets done."
+      "key": "communication",
+      "icon": "presentation-chart-line",
+      "title": "Engineering Communication",
+      "description": "Technical writing, pitch presentations, and executive summaries for engineering and business audiences. Proven in two industry competitions with judges from energy and manufacturing sectors."
     }
   ]
 }

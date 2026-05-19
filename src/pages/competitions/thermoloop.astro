@@ -1,0 +1,124 @@
+---
+import CaseStudy from '../../components/CaseStudy.astro';
+---
+
+<CaseStudy
+  title="ThermoLoop: AI Data Center Thermal Recycling"
+  description="Closed loop thermal recycling architecture for AI data centers. 2nd of 4 finalists, $3,000 scholarship awarded at the iMasons Denver Mines Scholarship Challenge."
+  backHref="/#portfolio"
+  backLabel="Back to Competitions"
+  eyebrow="iMasons Denver Mines Scholarship Challenge"
+>
+
+  <h2>Problem</h2>
+  <p>
+    AI data centers consume 1 to 2% of global electricity and reject large quantities of heat as waste.
+    Conventional cooling systems treat that thermal output as a liability. A 20 MW IT load produces
+    roughly 20 MW of thermal output, most of which is vented to the atmosphere unused. The iMasons
+    challenge asked teams to propose an architecture that changes that.
+  </p>
+
+  <h2>Approach</h2>
+  <p>
+    ThermoLoop is a closed loop thermal recycling architecture that captures waste heat at every
+    stage and routes it toward useful work. The system operates across four stages.
+  </p>
+  <ul>
+    <li>
+      <strong>Stage 1 (Direct to chip cooling):</strong> Two phase cold plates mounted on server CPUs
+      and GPUs. Coolant exits at 50 to 65 degrees Celsius. Up to 82% less cooling energy compared
+      to air cooling.
+    </li>
+    <li>
+      <strong>Stage 2A (Adsorption chiller):</strong> Silica gel and water adsorption cycle produces
+      chilled water at approximately 7 degrees Celsius. Reduces mechanical cooling load by
+      approximately 80.5%. COP 0.3 to 0.5.
+    </li>
+    <li>
+      <strong>Stage 2B (Organic Rankine Cycle):</strong> ORC turbine converts remaining high-grade
+      waste heat to electricity at 8 to 15% thermal efficiency.
+    </li>
+    <li>
+      <strong>Stage 3 (AI thermal dispatch):</strong> Intelligent control layer routes thermal output
+      in real time to four destinations: adsorption chiller, ORC generator, thermal storage buffer,
+      or community heat export loop, based on demand signals.
+    </li>
+    <li>
+      <strong>Stage 4 (Community heat export):</strong> District heating, greenhouse agriculture, and
+      aquaculture. A 20 MW IT load produces roughly 20 MW thermal output, enough to heat approximately
+      10,000 to 15,000 homes.
+    </li>
+  </ul>
+
+  <h2>Results</h2>
+  <div class="placement-badge">2nd of 4 finalists. $3,000 scholarship awarded.</div>
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Grid power reduction (per 100 MW)</td>
+        <td class="mono">30 to 40%</td>
+      </tr>
+      <tr>
+        <td>Water savings</td>
+        <td class="mono">~33 million gallons per year</td>
+      </tr>
+      <tr>
+        <td>Waste heat to electricity (recoverable)</td>
+        <td class="mono">70 to 90%</td>
+      </tr>
+      <tr>
+        <td>CO2 avoided</td>
+        <td class="mono">3,000 to 9,000+ tonnes per year</td>
+      </tr>
+      <tr>
+        <td>Deployment timeline</td>
+        <td class="mono">12 to 14 months</td>
+      </tr>
+      <tr>
+        <td>Competition placement</td>
+        <td class="mono">2nd of 4 finalists</td>
+      </tr>
+      <tr>
+        <td>Scholarship awarded</td>
+        <td class="mono">$3,000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>My Role</h2>
+  <p>
+    Co-designed with Sam Wolpert. I contributed to the four-stage system architecture, stage
+    integration logic, AI dispatch framework, and the pitch presentation delivered to iMasons
+    judges. Both team members shared analysis and writing equally.
+  </p>
+
+  <h2>Reference Material</h2>
+  <div class="ref-links">
+    <a href="/documents/thermoloop-pitch.pdf" class="ref-link" target="_blank" rel="noopener">
+      <svg viewBox="0 0 20 20" fill="none" class="w-4 h-4" aria-hidden="true">
+        <path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Pitch Deck (PDF)
+    </a>
+  </div>
+
+  <h2>Skills Demonstrated</h2>
+  <div class="skill-tags">
+    <span class="skill-tag">Thermal Systems</span>
+    <span class="skill-tag">Thermodynamics</span>
+    <span class="skill-tag">Heat Exchangers</span>
+    <span class="skill-tag">Adsorption Cycles</span>
+    <span class="skill-tag">ORC</span>
+    <span class="skill-tag">AI Optimization</span>
+    <span class="skill-tag">Technical Writing</span>
+    <span class="skill-tag">Pitch Communication</span>
+    <span class="skill-tag">System Architecture</span>
+  </div>
+
+</CaseStudy>

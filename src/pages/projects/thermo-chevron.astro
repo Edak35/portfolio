@@ -1,0 +1,131 @@
+---
+import CaseStudy from '../../components/CaseStudy.astro';
+---
+
+<CaseStudy
+  title="Chevron Combined Cycle Cogeneration Analysis"
+  description="Thermodynamic analysis of a Chevron combined cycle cogeneration facility across four upgrade cases using EES. Partner project with Noah Whitaker, MEGN 261, Spring 2026."
+  backHref="/#projects"
+  backLabel="Back to Projects"
+  eyebrow="MEGN 261 Mini Project"
+>
+
+  <h2>Problem</h2>
+  <p>
+    Evaluate four performance improvement pathways for a Chevron combined cycle cogeneration
+    facility and quantify the energy output, efficiency, and cost impact of each upgrade scenario.
+    The goal was to identify which modifications offered the best return relative to capital and
+    operational tradeoffs.
+  </p>
+
+  <h2>Approach</h2>
+  <p>
+    Full thermodynamic modeling of the Brayton cycle combined cycle cogeneration facility using
+    EES (Engineering Equation Solver) across four upgrade cases. Each case modified a single
+    facility parameter and held all other conditions equal for direct comparison.
+  </p>
+  <ul>
+    <li>
+      <strong>Baseline:</strong> Brayton gas turbine driving a steam Rankine bottoming cycle with
+      cogeneration extraction. Reference state for all comparisons.
+    </li>
+    <li>
+      <strong>Case 1 (Evaporative cooler):</strong> Inlet air cooling sized for Golden, CO October
+      conditions at 85% effectiveness. Lowers compressor inlet temperature to increase mass flow
+      and power output.
+    </li>
+    <li>
+      <strong>Case 2 (OEM turbine upgrade, T7 = 2,100 degrees Fahrenheit):</strong> Raises turbine
+      inlet temperature to increase power output. NOx emissions concern noted at elevated temperature.
+    </li>
+    <li>
+      <strong>Case 3 (Finer inlet filter, 2 psi pressure drop):</strong> Traces the compressor
+      isentropic efficiency increase required to offset the additional pressure drop with no net
+      power penalty.
+    </li>
+    <li>
+      <strong>Case 4 (Steam reheat):</strong> Addition of a reheat stage to the steam bottoming
+      cycle. Increases cycle thermal efficiency and reduces duct burner natural gas demand.
+    </li>
+  </ul>
+
+  <h2>Results</h2>
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th>Case</th>
+        <th>Net Power</th>
+        <th>Thermal Efficiency</th>
+        <th>Delta vs. Baseline</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Baseline</td>
+        <td class="mono">42.78 MW</td>
+        <td class="mono">32.72%</td>
+        <td class="mono">reference</td>
+      </tr>
+      <tr>
+        <td>Case 1 (Evap cooler)</td>
+        <td class="mono">45.12 MW</td>
+        <td class="mono">33.05%</td>
+        <td class="mono">+2.35 MW</td>
+      </tr>
+      <tr>
+        <td>Case 2 (OEM upgrade)</td>
+        <td class="mono">44.45 MW</td>
+        <td class="mono">32.96%</td>
+        <td class="mono">+1.67 MW</td>
+      </tr>
+      <tr>
+        <td>Case 3 (Finer filter)</td>
+        <td class="mono">42.78 MW</td>
+        <td class="mono">32.72%</td>
+        <td class="mono">0 net</td>
+      </tr>
+      <tr>
+        <td>Case 4 (Steam reheat)</td>
+        <td class="mono">42.78 MW</td>
+        <td class="mono">~37.74%</td>
+        <td class="mono">efficiency gain</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Case 1 payback: approximately 75 days continuous on $1,000,000 capital. Case 3 requires
+    compressor efficiency to increase from 84.02% to approximately 92.25% (a 4.3% gain) to offset
+    the filter pressure drop with no power penalty. Case 4 reduces duct burner demand by 70%,
+    generating approximately $2.08M per year in natural gas savings and approximately 30,000
+    tonnes CO2 per year reduction.
+  </p>
+
+  <h2>My Role</h2>
+  <p>
+    Partner project with Noah Whitaker. I contributed EES code development for the four cases,
+    thermodynamic cycle validation, and the executive summary report.
+  </p>
+
+  <h2>Reference Material</h2>
+  <div class="ref-links">
+    <a href="/documents/chevron-report.pdf" class="ref-link" target="_blank" rel="noopener">
+      <svg viewBox="0 0 20 20" fill="none" class="w-4 h-4" aria-hidden="true">
+        <path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Executive Summary and EES Report (PDF)
+    </a>
+  </div>
+
+  <h2>Skills Demonstrated</h2>
+  <div class="skill-tags">
+    <span class="skill-tag">Thermodynamics</span>
+    <span class="skill-tag">EES</span>
+    <span class="skill-tag">Combined Cycle</span>
+    <span class="skill-tag">Cogeneration</span>
+    <span class="skill-tag">Brayton Cycle</span>
+    <span class="skill-tag">Rankine Cycle</span>
+    <span class="skill-tag">Energy Economics</span>
+    <span class="skill-tag">Technical Writing</span>
+  </div>
+
+</CaseStudy>

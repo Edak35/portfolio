@@ -1,34 +1,30 @@
 [
   {
-    "title": "Brand Identity & Visual System",
-    "category": "Branding",
-    "description": "A complete brand overhaul for a growing company — logo, typography, color system, and a style guide built to scale. Designed for flexibility without sacrificing cohesion.",
+    "title": "ThermoLoop: AI Data Center Thermal Recycling",
+    "category": "Competition",
+    "description": "Closed loop thermal recycling architecture for AI data centers. Four-stage system covering direct to chip cooling, adsorption chiller and ORC waste heat recovery, AI thermal dispatch, and community heat export. 2nd of 4 finalists, $3,000 scholarship awarded.",
     "images": [
-      "/images/portfolio/project-1a.jpg",
-      "/images/portfolio/project-1b.jpg",
-      "/images/portfolio/project-1c.jpg"
+      "/images/competitions/thermoloop-pitch.jpg",
+      "/images/competitions/thermoloop-award.jpg"
     ],
-    "slides": ["Brand Overview", "Style Guide Spread", "Product Shot"]
+    "slides": [
+      "Pitch presentation, iMasons Denver Mines Scholarship Challenge",
+      "Award ceremony, 2nd place finish and $3,000 scholarship"
+    ],
+    "link": "/competitions/thermoloop"
   },
   {
-    "title": "Interactive Web Experience",
-    "category": "Web Design",
-    "description": "A custom-built site blending editorial layout with smooth scroll interactions and motion. Designed in Figma, built in code, and optimized down to the frame.",
+    "title": "Ball Innov8x: Layered Waste Heat Cascade",
+    "category": "Competition",
+    "description": "Scope 1 emissions reduction for Ball Corporation's Corvallis, OR facility. Five-layer waste heat cascade recovers 2,180 kW, covering approximately 47% of facility heating demand. 3rd of 8 teams, $700 award.",
     "images": [
-      "/images/portfolio/project-2a.jpg",
-      "/images/portfolio/project-2b.jpg",
-      "/images/portfolio/project-2c.jpg"
+      "/images/competitions/ball-pitch.jpg",
+      "/images/competitions/ball-award.jpg"
     ],
-    "slides": ["Homepage Figma Design", "Homepage Complete", "Second Phase app page"]
-  },
-  {
-    "title": "Short Film & Motion Piece",
-    "category": "Video",
-    "description": "A two-minute visual essay combining original footage, 3D elements, and motion design. Shot, edited, and scored independently — start to finish in three weeks.",
-    "images": [
-      "/images/portfolio/project-3a.jpg",
-      "/images/portfolio/project-3b.jpg"
+    "slides": [
+      "Pitch presentation, Ball Innov8x Challenge S26",
+      "Award ceremony, 3rd place finish out of 8 teams"
     ],
-    "slides": ["Opening Scene", "Modeling Sequence", "Developing Music for Documentary"]
+    "link": "/competitions/ball-innov8x"
   }
 ]

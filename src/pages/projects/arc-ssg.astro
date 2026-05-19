@@ -1,0 +1,141 @@
+---
+import CaseStudy from '../../components/CaseStudy.astro';
+---
+
+<CaseStudy
+  title="Arc SSG: Smart Snow Goggles"
+  description="HUD goggle system with micro OLED display and beamsplitter bird path optics. Delivers real time data in the skier's line of sight. Four prototype iterations. $300 awarded through Innov8x Prototyping Fund."
+  backHref="/#projects"
+  backLabel="Back to Projects"
+  eyebrow="Innov8x BGO Program"
+>
+
+  <h2>Problem</h2>
+  <p>
+    Checking a phone on a ski slope requires removing a glove, fumbling with a touchscreen in
+    cold conditions, and looking away from the run. Collisions, falls, and distracted skiing follow.
+    No commercial product puts real time data (speed, temperature, altitude, run tracking) directly
+    in a skier's field of vision without requiring them to look away from the slope.
+  </p>
+
+  <h2>Approach</h2>
+  <p>
+    A modular HUD clip-on designed to work with existing ski goggles without permanent modification.
+    The system delivers a heads-up display in the skier's peripheral line of sight using commercial
+    off-the-shelf optics and a compact embedded compute stack.
+  </p>
+  <ul>
+    <li>
+      <strong>Optics:</strong> Micro OLED display paired with a beamsplitter bird path prism
+      projects a virtual image onto the goggle lens. Designed to occupy the lower peripheral
+      field without obstructing the primary view.
+    </li>
+    <li>
+      <strong>Compute and sensors:</strong> Raspberry Pi Zero as main processor. ESP32 module for
+      BLE wireless connectivity. IMU sensor for motion and orientation tracking. BME680 for
+      temperature and altitude readings.
+    </li>
+    <li>
+      <strong>Software:</strong> Web-based HUD renderer served locally by the Pi Zero. Connected
+      wirelessly from a companion BLE device. No cloud dependency.
+    </li>
+    <li>
+      <strong>Form factor:</strong> 3D-printed modular housing clips to the goggle frame. No
+      adhesive or permanent modification required.
+    </li>
+  </ul>
+  <p>
+    Four prototype iterations over two semesters: sensor validation, web HUD rendering,
+    wireless BLE connectivity, and final OLED and beamsplitter integration.
+  </p>
+  <p>
+    Business model: technology licensing to established goggle manufacturers (Smith, Oakley, POC).
+    US premium goggle market TAM: $2.7B to $3.6B.
+  </p>
+
+  <h2>Results</h2>
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Prototype iterations</td>
+        <td class="mono">4</td>
+      </tr>
+      <tr>
+        <td>Funding awarded</td>
+        <td class="mono">$300 (Innov8x Prototyping Fund, 2 semesters)</td>
+      </tr>
+      <tr>
+        <td>Program</td>
+        <td class="mono">Innov8x BGO</td>
+      </tr>
+      <tr>
+        <td>Target market (US)</td>
+        <td class="mono">$2.7B to $3.6B premium goggle market</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>My Role</h2>
+  <p>
+    Project lead for Arc SSG. Responsible for optics design, hardware design, 3D printing,
+    prototyping software, and external communication with program advisors and potential
+    manufacturing partners. Team: Colin Smith, Cade Kaminski, Martin Goes, Pratiksha Satish,
+    Li Hong Sweet-Seip.
+  </p>
+
+  <h2>Photos</h2>
+  <div class="arc-photos">
+    <img src="/images/projects/arc-ssg.jpg" alt="Arc SSG prototype" loading="lazy" class="arc-photo" />
+    <img src="/images/projects/arc-ssg-2.jpg" alt="Arc SSG prototype detail" loading="lazy" class="arc-photo" />
+  </div>
+
+  <h2>Videos</h2>
+  <div class="arc-videos">
+    <div class="arc-video-block">
+      <p class="arc-video-label">Prototype Demo</p>
+      <video controls preload="metadata" class="arc-video" poster="/images/projects/arc-ssg.jpg">
+        <source src="/videos/arc-ssg-prototype.mov" type="video/quicktime" />
+        <source src="/videos/arc-ssg-prototype.mov" type="video/mp4" />
+        <a href="/videos/arc-ssg-prototype.mov" class="ref-link">Download prototype video</a>
+      </video>
+    </div>
+    <div class="arc-video-block">
+      <p class="arc-video-label">Video Pitch</p>
+      <video controls preload="metadata" class="arc-video" poster="/images/projects/arc-ssg-2.jpg">
+        <source src="/videos/arc-ssg-pitch.mp4" type="video/mp4" />
+        <a href="/videos/arc-ssg-pitch.mp4" class="ref-link">Download pitch video</a>
+      </video>
+    </div>
+  </div>
+
+  <h2>Reference Material</h2>
+  <div class="ref-links">
+    <a href="/documents/arc-ssg-paper.pdf" class="ref-link" target="_blank" rel="noopener">
+      <svg viewBox="0 0 20 20" fill="none" class="w-4 h-4" aria-hidden="true">
+        <path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Final Paper (PDF)
+    </a>
+  </div>
+
+  <h2>Skills Demonstrated</h2>
+  <div class="skill-tags">
+    <span class="skill-tag">Optics Design</span>
+    <span class="skill-tag">Embedded Systems</span>
+    <span class="skill-tag">Raspberry Pi</span>
+    <span class="skill-tag">ESP32</span>
+    <span class="skill-tag">BLE</span>
+    <span class="skill-tag">3D Printing</span>
+    <span class="skill-tag">Rapid Prototyping</span>
+    <span class="skill-tag">Hardware Design</span>
+    <span class="skill-tag">Project Management</span>
+    <span class="skill-tag">Technical Communication</span>
+  </div>
+
+</CaseStudy>

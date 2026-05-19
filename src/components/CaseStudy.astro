@@ -1,0 +1,273 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  backHref: string;
+  backLabel: string;
+  eyebrow?: string;
+}
+
+const { title, description, backHref, backLabel, eyebrow = 'Case Study' } = Astro.props;
+---
+
+<Layout title={`${title} | Cade Kaminski`} description={description}>
+  <Header />
+  <main id="main-content" class="case-study-page">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-3xl">
+      <nav class="mb-10">
+        <a href={backHref} class="back-link">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" class="w-4 h-4">
+            <path d="M17 10H3M10 17l-7-7 7-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          {backLabel}
+        </a>
+      </nav>
+
+      <header class="mb-12">
+        <p class="eyebrow">{eyebrow}</p>
+        <h1 class="page-title">{title}</h1>
+      </header>
+
+      <article class="case-study-body">
+        <slot />
+      </article>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .case-study-page {
+    min-height: 100vh;
+    padding-top: 80px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted, #8b949e);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .back-link:hover {
+    color: var(--accent, #1e9fd4);
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent, #1e9fd4);
+    margin-bottom: 0.5rem;
+  }
+
+  .page-title {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text, #e6edf3);
+    margin: 0;
+  }
+
+  .case-study-body {
+    color: var(--text, #e6edf3);
+    line-height: 1.75;
+  }
+
+  .case-study-body :global(h2) {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text, #e6edf3);
+    margin: 2.5rem 0 0.75rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border, #30363d);
+  }
+
+  .case-study-body :global(h2:first-child) {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .case-study-body :global(p) {
+    color: var(--text-muted, #8b949e);
+    margin-bottom: 1rem;
+  }
+
+  .case-study-body :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
+  }
+
+  .case-study-body :global(ul li) {
+    position: relative;
+    padding-left: 1.25rem;
+    color: var(--text-muted, #8b949e);
+    margin-bottom: 0.4rem;
+  }
+
+  .case-study-body :global(ul li::before) {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent, #1e9fd4);
+  }
+
+  .case-study-body :global(strong) {
+    color: var(--text, #e6edf3);
+    font-weight: 600;
+  }
+
+  .case-study-body :global(.results-table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .case-study-body :global(.results-table th) {
+    text-align: left;
+    padding: 0.6rem 1rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted, #8b949e);
+    border-bottom: 1px solid var(--border, #30363d);
+    background: rgba(255,255,255,0.02);
+  }
+
+  .case-study-body :global(.results-table td) {
+    padding: 0.6rem 1rem;
+    color: var(--text-muted, #8b949e);
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+    vertical-align: top;
+  }
+
+  .case-study-body :global(.results-table td:first-child) {
+    color: var(--text, #e6edf3);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .case-study-body :global(.results-table td.mono) {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    color: var(--mono, #79c0ff);
+    font-size: 0.82rem;
+  }
+
+  .case-study-body :global(.skill-tags) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .case-study-body :global(.skill-tag) {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    background: rgba(30, 159, 212, 0.1);
+    border: 1px solid rgba(30, 159, 212, 0.25);
+    color: var(--accent, #1e9fd4);
+  }
+
+  .case-study-body :global(.ref-links) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .case-study-body :global(.ref-link) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid var(--border, #30363d);
+    color: var(--text-muted, #8b949e);
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .case-study-body :global(.ref-link:hover) {
+    color: var(--text, #e6edf3);
+    border-color: var(--accent, #1e9fd4);
+  }
+
+  .case-study-body :global(.placement-badge) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem;
+    background: rgba(30, 159, 212, 0.08);
+    border: 1px solid rgba(30, 159, 212, 0.3);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent, #1e9fd4);
+    margin: 1rem 0;
+  }
+
+  .case-study-body :global(.arc-photos) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .case-study-body :global(.arc-photo) {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border, #30363d);
+  }
+
+  .case-study-body :global(.arc-videos) {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .case-study-body :global(.arc-video-block) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .case-study-body :global(.arc-video-label) {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted, #8b949e);
+    margin: 0;
+  }
+
+  .case-study-body :global(.arc-video) {
+    width: 100%;
+    max-height: 480px;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border, #30363d);
+    background: #000;
+  }
+</style>

@@ -1,114 +1,59 @@
 {
-  "title": "Your Name Here | Creative Portfolio",
-  "description": "Portfolio of a designer, developer, and creator. Browse work spanning web, visual design, 3D, video, and more — then reach out.",
-  "ogSiteName": "Portfolio",
-  "shortName": "FOLIO",
-  "tagline": "Designing experiences · Building products · Telling stories",
-  "themeStorageKey": "portfolio-theme",
-  "web3formsKey": "YOUR_WEB3FORMS_KEY_HERE",
+  "title": "Cade Kaminski | Mechanical Engineering Portfolio",
+  "description": "Portfolio of Cade Kaminski, Mechanical Engineering student at Colorado School of Mines. Competition placements in thermal systems design, FEA analysis, embedded hardware, and fabrication projects.",
+  "ogSiteName": "Cade Kaminski",
+  "shortName": "CK",
+  "tagline": "Thermal systems · Structural analysis · Hardware prototyping",
+  "themeStorageKey": "ck-theme",
+  "web3formsKey": "43235b60-ccbf-40ae-856a-bd26f0a54786",
   "footerAttribution": {
-    "builder": "Built with this open-source template",
-    "builderUrl": "https://github.com/your-github-handle",
-    "host": "Hosted on your platform of choice",
-    "hostUrl": "https://yourdomain.com"
+    "builder": "Built with astro-portfolio-theme",
+    "builderUrl": "https://github.com/MarcusHoltz/astro-portfolio-theme",
+    "host": "Hosted on Cloudflare Pages",
+    "hostUrl": "https://cloudflare.com"
   },
-  "retroTvCount": 21,
+  "retroTvCount": 0,
   "seoKeywords": [
-    "Creative Portfolio",
-    "Web Designer",
-    "Visual Artist",
-    "UI/UX Design",
-    "Front-End Developer",
-    "3D Artist",
-    "Motion Graphics",
-    "Brand Identity",
-    "Freelance Designer",
-    "Video Editor",
-    "Photography",
-    "Illustration",
-    "Digital Art",
-    "Graphic Design",
-    "Interactive Design",
-    "Product Design",
-    "Creative Direction",
-    "Art Direction",
-    "Full-Stack Developer",
-    "Animator",
-    "Typographer",
-    "Storyteller",
-    "Open to Work",
-    "Available for Projects",
-    "Design Systems",
-    "Visual Storytelling"
+    "Mechanical Engineering Portfolio",
+    "Colorado School of Mines",
+    "FEA Analysis",
+    "Thermal Systems Design",
+    "SolidWorks",
+    "Finite Element Analysis",
+    "Waste Heat Recovery",
+    "Data Center Cooling",
+    "Engineering Student",
+    "Hardware Prototyping",
+    "Rapid Prototyping",
+    "Embedded Systems",
+    "CAD Design",
+    "Thermodynamics",
+    "Engineering Design Competition",
+    "iMasons Scholarship",
+    "Innov8x",
+    "Cade Kaminski",
+    "Mines Engineering",
+    "Open to Internship"
   ],
   "navExternal": [
     {
-      "label": "Blog",
-      "desc": "Writing on design, process, and what I'm learning",
-      "personalKey": "blog",
-      "urlTemplate": "{value}"
-    },
-    {
       "label": "GitHub",
-      "desc": "Open-source work and side experiments",
+      "desc": "Engineering projects and code",
       "personalKey": "github",
       "urlTemplate": "https://github.com/{value}"
     },
     {
       "label": "LinkedIn",
-      "desc": "Professional profile and recommendations",
+      "desc": "Professional profile",
       "personalKey": "linkedin",
       "urlTemplate": "https://linkedin.com/in/{value}"
     },
     {
       "label": "Email",
-      "desc": "Best way to reach me for project inquiries",
+      "desc": "Best way to reach me",
       "personalKey": "email",
       "urlTemplate": "mailto:{value}"
-    },
-    {
-      "label": "Phone",
-      "desc": "Available for calls by appointment",
-      "personalKey": "phone",
-      "urlTemplate": "tel:{value}"
     }
   ],
-  "serviceSites": [
-    {
-      "badge": "Client Work",
-      "badgeColor": "#6366f1",
-      "cardAccent": "#6366f1",
-      "glowColor": "rgba(99, 102, 241, 0.12)",
-      "iconBg": "rgba(99, 102, 241, 0.1)",
-      "iconBorder": "rgba(99, 102, 241, 0.18)",
-      "iconType": "web",
-      "name": "YourStudio.co",
-      "url": "https://yourstudio.co",
-      "description": "A dedicated space for client work — branding, web builds, campaigns, and everything in between. Full-service creative from concept through delivery, built on clear communication and no surprises.",
-      "features": [
-        "Brand Identity & Visual Systems",
-        "Web Design & Development",
-        "Campaign Creative & Direction"
-      ],
-      "ctaText": "View Studio Work"
-    },
-    {
-      "badge": "Side Project",
-      "badgeColor": "#10b981",
-      "cardAccent": "#10b981",
-      "glowColor": "rgba(16, 185, 129, 0.15)",
-      "iconBg": "rgba(16, 185, 129, 0.1)",
-      "iconBorder": "rgba(16, 185, 129, 0.2)",
-      "iconType": "server",
-      "name": "YourProject.io",
-      "url": "https://yourproject.io",
-      "description": "A personal project built to scratch an itch — self-hosted, self-managed, and entirely my own problem to maintain. Independent, opinionated, and shipped without a committee.",
-      "features": [
-        "Self-Hosted & Fully Independent",
-        "Iterating in Public",
-        "Built for One Person: Me"
-      ],
-      "ctaText": "Check It Out"
-    }
-  ]
+  "serviceSites": []
 }

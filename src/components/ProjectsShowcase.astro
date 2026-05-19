@@ -16,8 +16,10 @@ const projectsData = projectsFile.items;
       {
         projectsData.map((project, index) => {
           const hasImages = Boolean(project.backgroundImage && (project as any).images?.length);
+          const isInternal = project.link.startsWith('/');
           const ctaLabel = project.link.includes('github.com') ? 'View on GitHub'
             : project.link.includes('gitlab') ? 'View on GitLab'
+            : isInternal ? 'View Case Study'
             : project.link ? 'View Project'
             : null;
 
@@ -73,7 +75,7 @@ const projectsData = projectsFile.items;
                 </div>
 
                 {ctaLabel && (
-                  <a href={project.link} target="_blank" rel="noopener" class="project-link">
+                  <a href={project.link} {...(!isInternal ? { target: '_blank', rel: 'noopener' } : {})} class="project-link">
                     {ctaLabel}
                     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
                       <path

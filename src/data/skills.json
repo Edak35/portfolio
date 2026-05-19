@@ -1,64 +1,61 @@
 {
   "section": {
-    "eyebrow": "What I work with",
-    "heading": "Technical Arsenal"
+    "eyebrow": "Tools and technologies",
+    "heading": "Technical Skills"
   },
   "categories": [
     {
-      "title": "Design & Illustration",
+      "title": "CAD and Simulation",
       "skills": [
-        { "name": "Figma",       "icon": "simple-icons:figma" },
-        { "name": "Photoshop",   "icon": "simple-icons:adobephotoshop" },
-        { "name": "Illustrator", "icon": "simple-icons:adobeillustrator" },
-        { "name": "Blender",     "icon": "simple-icons:blender" },
-        { "name": "Sketch",      "icon": "simple-icons:sketch" }
+        { "name": "SolidWorks",       "icon": "simple-icons:dassaultsystemes" },
+        { "name": "Fusion 360",       "icon": "simple-icons:autodesk" },
+        { "name": "FEA",              "icon": "mdi:chart-scatter-plot" },
+        { "name": "GD&T",             "icon": "mdi:ruler-square" }
       ]
     },
     {
-      "title": "Web & Frontend",
+      "title": "Analysis Tools",
       "skills": [
-        { "name": "HTML5",      "icon": "simple-icons:html5" },
-        { "name": "CSS3",       "icon": "simple-icons:css3" },
-        { "name": "JavaScript", "icon": "simple-icons:javascript" },
-        { "name": "TypeScript", "icon": "simple-icons:typescript" },
-        { "name": "React",      "icon": "simple-icons:react" },
-        { "name": "Bootstrap",  "icon": "simple-icons:bootstrap" }
+        { "name": "EES",              "icon": "mdi:function-variant" },
+        { "name": "Mathcad",          "icon": "mdi:calculator-variant" },
+        { "name": "LabVIEW",          "icon": "mdi:application-brackets-outline" },
+        { "name": "MS Office",        "icon": "simple-icons:microsoftoffice" }
       ]
     },
     {
-      "title": "Motion, 3D & Video",
+      "title": "Programming and Embedded",
       "skills": [
-        { "name": "Three.js",     "icon": "simple-icons:threedotjs" },
-        { "name": "After Effects","icon": "simple-icons:adobeaftereffects" },
-        { "name": "Premiere Pro", "icon": "simple-icons:adobepremierepro" },
-        { "name": "Photoshop",    "icon": "simple-icons:adobephotoshop" }
+        { "name": "C++",              "icon": "simple-icons:cplusplus" },
+        { "name": "Arduino",          "icon": "simple-icons:arduino" },
+        { "name": "Raspberry Pi",     "icon": "simple-icons:raspberrypi" },
+        { "name": "Git",              "icon": "simple-icons:git" }
       ]
     },
     {
-      "title": "Platforms & Publishing",
+      "title": "Fabrication",
       "skills": [
-        { "name": "WordPress", "icon": "simple-icons:wordpress" },
-        { "name": "Drupal",    "icon": "simple-icons:drupal" },
-        { "name": "Hugo",      "icon": "simple-icons:hugo" },
-        { "name": "AWS",       "icon": "simple-icons:amazonaws" }
+        { "name": "CNC Machining",    "icon": "mdi:cog-outline" },
+        { "name": "3D Printing",      "icon": "mdi:printer-3d" },
+        { "name": "Mill and Lathe",   "icon": "mdi:wrench" },
+        { "name": "Welding",          "icon": "mdi:torch" }
       ]
     },
     {
-      "title": "Dev & Workflow Tools",
+      "title": "Technical Communication",
       "skills": [
-        { "name": "Git",      "icon": "simple-icons:git" },
-        { "name": "GitHub",   "icon": "simple-icons:github" },
-        { "name": "Bash",     "icon": "simple-icons:gnubash" },
-        { "name": "Markdown", "icon": "simple-icons:markdown" }
+        { "name": "Technical Writing","icon": "mdi:file-document-outline" },
+        { "name": "Agile",            "icon": "mdi:chart-gantt" },
+        { "name": "Video Editing",    "icon": "mdi:video-outline" },
+        { "name": "Photography",      "icon": "mdi:camera-outline" }
       ]
     },
     {
-      "title": "Data & Infrastructure",
+      "title": "Additional Skills",
       "skills": [
-        { "name": "SQLite",     "icon": "simple-icons:sqlite" },
-        { "name": "Nginx",      "icon": "simple-icons:nginx" },
-        { "name": "Docker",     "icon": "simple-icons:docker" },
-        { "name": "Prometheus", "icon": "simple-icons:prometheus" }
+        { "name": "Root Cause Analysis","icon": "mdi:magnify-scan" },
+        { "name": "Public Speaking",  "icon": "mdi:microphone-outline" },
+        { "name": "GitHub",           "icon": "simple-icons:github" },
+        { "name": "Laser Cutting",    "icon": "mdi:laser-pointer" }
       ]
     }
   ]

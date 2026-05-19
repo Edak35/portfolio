@@ -1,0 +1,373 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Resume | Cade Kaminski"
+  description="Resume of Cade Kaminski, Mechanical Engineering student at Colorado School of Mines. Download PDF or view on-page summary."
+>
+  <Header />
+  <main id="main-content" class="resume-page">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-3xl">
+
+      <nav class="mb-10">
+        <a href="/" class="back-link">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" class="w-4 h-4">
+            <path d="M17 10H3M10 17l-7-7 7-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Back to Portfolio
+        </a>
+      </nav>
+
+      <header class="page-header mb-12">
+        <p class="eyebrow">Cade Kaminski</p>
+        <h1 class="page-title">Resume</h1>
+        <div class="download-bar">
+          <a href="/resume.pdf" target="_blank" rel="noopener" class="btn-download">
+            <svg viewBox="0 0 20 20" fill="none" class="w-4 h-4" aria-hidden="true">
+              <path d="M4 16v1a2 2 0 002 2h8a2 2 0 002-2v-1M10 3v10m0 0l-3-3m3 3l3-3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Download PDF
+          </a>
+          <a href="/resume.pdf" target="_blank" rel="noopener" class="btn-view">
+            View in Browser
+          </a>
+        </div>
+      </header>
+
+      <div class="resume-body">
+
+        <section class="resume-section">
+          <h2>Education</h2>
+          <div class="resume-entry">
+            <div class="entry-header">
+              <span class="entry-title">B.E. Mechanical Engineering</span>
+              <span class="entry-date">September 2024 to December 2027</span>
+            </div>
+            <p class="entry-org">Colorado School of Mines, Golden, CO</p>
+            <p class="entry-detail">Specialization in Business and Management. GPA 3.11. Dean's List Fall 2024.</p>
+          </div>
+        </section>
+
+        <section class="resume-section">
+          <h2>Competition Experience</h2>
+          <div class="resume-entry">
+            <div class="entry-header">
+              <span class="entry-title">iMasons Denver Mines Scholarship Challenge</span>
+              <span class="entry-date">2025</span>
+            </div>
+            <p class="entry-org">2nd of 4 finalists. $3,000 scholarship awarded.</p>
+            <p class="entry-detail">
+              Designed ThermoLoop, a closed loop thermal recycling architecture for AI data centers
+              covering direct to chip cooling, adsorption chiller, ORC waste heat recovery, AI thermal
+              dispatch, and community heat export. Partner: Sam Wolpert.
+            </p>
+          </div>
+          <div class="resume-entry">
+            <div class="entry-header">
+              <span class="entry-title">Ball Corporation Innov8x Challenge S26</span>
+              <span class="entry-date">2026</span>
+            </div>
+            <p class="entry-org">3rd of 8 teams. $700 award.</p>
+            <p class="entry-detail">
+              Designed a five-layer waste heat cascade for Ball's Corvallis, OR facility recovering
+              2,180 kW. Team: The Meth-An Company (Cade Kaminski, Thomas Glenn, Martin Goes,
+              Sam Wolpert, Victoria Filio).
+            </p>
+          </div>
+        </section>
+
+        <section class="resume-section">
+          <h2>Projects</h2>
+          <div class="resume-entry">
+            <div class="entry-header">
+              <span class="entry-title">Arc SSG (Smart Snow Goggles)</span>
+              <span class="entry-date">2025 to 2026</span>
+            </div>
+            <p class="entry-org">Innov8x BGO Program. $300 awarded through Prototyping Fund.</p>
+            <p class="entry-detail">
+              Project lead. Developed a HUD ski goggle prototype with micro OLED optics and
+              Raspberry Pi compute stack. Four prototype iterations over two semesters.
+            </p>
+          </div>
+          <div class="resume-entry">
+            <div class="entry-header">
+              <span class="entry-title">FEA Rear Double Wishbone Suspension</span>
+              <span class="entry-date">Spring 2026</span>
+            </div>
+            <p class="entry-org">MEGN 324. Solo project.</p>
+            <p class="entry-detail">
+              Static structural analysis in SolidWorks Simulation. Mesh convergence study, spring
+              element modeling, analytical hand calculations. FOS approximately 6.3.
+            </p>
+          </div>
+          <div class="resume-entry">
+            <div class="entry-header">
+              <span class="entry-title">Chevron Combined Cycle Cogeneration Analysis</span>
+              <span class="entry-date">Spring 2026</span>
+            </div>
+            <p class="entry-org">MEGN 261. Partner: Noah Whitaker.</p>
+            <p class="entry-detail">
+              EES modeling of four upgrade cases for a combined cycle cogeneration facility.
+              Steam reheat case: approximately $2.08M per year natural gas savings, approximately 30,000
+              tonnes CO2 per year reduction.
+            </p>
+          </div>
+          <div class="resume-entry">
+            <div class="entry-header">
+              <span class="entry-title">Derby Car Design and Fabrication</span>
+              <span class="entry-date">Fall 2025</span>
+            </div>
+            <p class="entry-org">MEGN 201. Solo project.</p>
+            <p class="entry-detail">
+              Cybertruck aesthetic derby car. Processes: milling, lathe, CNC, laser cutting.
+              Full GD&T drawing packet in SolidWorks.
+            </p>
+          </div>
+          <div class="resume-entry">
+            <div class="entry-header">
+              <span class="entry-title">Drone Package Delivery Mechanism</span>
+              <span class="entry-date">Fall 2025</span>
+            </div>
+            <p class="entry-org">MEGN 261. 2-person team.</p>
+            <p class="entry-detail">
+              Mechanical payload release and delivery mechanism. SolidWorks CAD, design poster,
+              and presentation.
+            </p>
+          </div>
+        </section>
+
+        <section class="resume-section">
+          <h2>Experience</h2>
+          <div class="resume-entry">
+            <div class="entry-header">
+              <span class="entry-title">Marketing and Media</span>
+              <span class="entry-date">February 2024 to Present</span>
+            </div>
+            <p class="entry-org">Colorado School of Mines, Campus Recreation</p>
+            <p class="entry-detail">
+              Capture video and photography for intramural sports and campus recreation events.
+              Build highlight reels and short form social content. Manage footage organization,
+              shot selection, and postproduction workflows.
+            </p>
+          </div>
+        </section>
+
+        <section class="resume-section">
+          <h2>Technical Skills</h2>
+          <div class="skills-grid">
+            <div>
+              <p class="skills-category">CAD and Simulation</p>
+              <p class="skills-list">SolidWorks, Fusion 360, FEA, Mathcad, GD&T</p>
+            </div>
+            <div>
+              <p class="skills-category">Fabrication</p>
+              <p class="skills-list">CNC, Mill, Lathe, Welding, 3D Printing, Laser Cutting</p>
+            </div>
+            <div>
+              <p class="skills-category">Programming</p>
+              <p class="skills-list">C++, Arduino, EES, LabVIEW, Git</p>
+            </div>
+            <div>
+              <p class="skills-category">Professional</p>
+              <p class="skills-list">Technical Writing, Agile, Root Cause Analysis, Public Speaking</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="resume-section">
+          <h2>Certifications</h2>
+          <ul class="cert-list">
+            <li>Certified SOLIDWORKS Associate, Dassault Systèmes</li>
+            <li>AI Fluency for Students, LinkedIn Learning</li>
+            <li>Microsoft Azure Essentials Professional Certificate, Microsoft and LinkedIn</li>
+          </ul>
+        </section>
+
+        <section class="resume-section">
+          <h2>Volunteer</h2>
+          <ul class="cert-list">
+            <li>Platte River Academy, Summer 2025 (200+ hours)</li>
+            <li>Crown Hill Church, Fall 2025</li>
+            <li>Oaks International SALT Leadership, Fall 2025</li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .resume-page {
+    min-height: 100vh;
+    padding-top: 80px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted, #8b949e);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .back-link:hover {
+    color: var(--accent, #1e9fd4);
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent, #1e9fd4);
+    margin-bottom: 0.5rem;
+  }
+
+  .page-title {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: var(--text, #e6edf3);
+    margin: 0 0 1.25rem;
+  }
+
+  .download-bar {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.25rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: var(--accent, #1e9fd4);
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  .btn-download:hover {
+    opacity: 0.85;
+  }
+
+  .btn-view {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 1.25rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--border, #30363d);
+    color: var(--text-muted, #8b949e);
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .btn-view:hover {
+    color: var(--text, #e6edf3);
+    border-color: var(--accent, #1e9fd4);
+  }
+
+  .resume-body {
+    color: var(--text, #e6edf3);
+  }
+
+  .resume-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .resume-section h2 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent, #1e9fd4);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border, #30363d);
+  }
+
+  .resume-entry {
+    margin-bottom: 1.25rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--border, #30363d);
+  }
+
+  .entry-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.2rem;
+  }
+
+  .entry-title {
+    font-weight: 600;
+    color: var(--text, #e6edf3);
+    font-size: 0.95rem;
+  }
+
+  .entry-date {
+    font-size: 0.78rem;
+    color: var(--text-muted, #8b949e);
+    white-space: nowrap;
+  }
+
+  .entry-org {
+    font-size: 0.85rem;
+    color: var(--accent, #1e9fd4);
+    margin: 0 0 0.3rem;
+  }
+
+  .entry-detail {
+    font-size: 0.84rem;
+    color: var(--text-muted, #8b949e);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .skills-category {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text, #e6edf3);
+    margin: 0 0 0.2rem;
+  }
+
+  .skills-list {
+    font-size: 0.82rem;
+    color: var(--text-muted, #8b949e);
+    margin: 0;
+  }
+
+  .cert-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .cert-list li {
+    font-size: 0.875rem;
+    color: var(--text-muted, #8b949e);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(48,54,61,0.4);
+  }
+  .cert-list li:last-child {
+    border-bottom: none;
+  }
+</style>

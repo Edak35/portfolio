@@ -1,6 +1,7 @@
 ---
 import personalData from '../data/personal.json';
 import projectsFile from '../data/projects.json';
+import portfolioData from '../data/portfolio.json';
 import { augmentProjectsWithImages, type ProjectEntry } from '../lib/fetchGitHub';
 const projectsData = projectsFile.items;
 import { getSocialLinks } from '../lib/socialLinks';
@@ -16,11 +17,23 @@ import { existsSync, readdirSync } from 'node:fs';
 import { extname, join } from 'node:path';
 
 const augmented = await augmentProjectsWithImages(projectsData as unknown as ProjectEntry[]);
-// Use GitHub-fetched featuredImage when available; fall back to sliderImage from JSON.
-// This keeps the slider populated even when GITHUB_USER is not configured.
 const featuredProjects = augmented
   .map((p) => ({ ...p, featuredImage: p.featuredImage ?? p.sliderImage }))
   .filter((p) => p.featuredImage)
+  .sort((a, b) => (a.sliderOrder ?? 999) - (b.sliderOrder ?? 999));
+
+const competitionSlides = (portfolioData as any[])
+  .filter((c) => c.images && c.images.length > 0)
+  .map((c, i) => ({
+    title: c.title,
+    featuredImage: c.images[0],
+    company: 'Competition',
+    sliderOrder: 4 + i,
+    icon: 'star',
+    link: c.link ?? '',
+  }));
+
+const allSlides = [...featuredProjects, ...competitionSlides]
   .sort((a, b) => (a.sliderOrder ?? 999) - (b.sliderOrder ?? 999));
 // Split "Frontend & Backend" so the "&" can be styled with a different colour in the template.
 const heroParts = personalData.heroRole.split(' & ');
@@ -109,13 +122,6 @@ const hasPortrait =
           </h2>
         </div>
 
-        <p
-          class="text-base text-slate-400 max-w-lg leading-relaxed reveal text-backdrop"
-          style="transition-delay: 0.2s;"
-        >
-          {personalData.bio}
-        </p>
-
         <div class="flex flex-col sm:flex-row gap-4 reveal" style="transition-delay: 0.3s;">
           <a href="#contact" class="btn-primary text-center">Get In Touch</a>
           {hasCv ? (
@@ -123,7 +129,7 @@ const hasPortrait =
               href={cvHref}
               target="_blank"
               rel="noopener noreferrer"
-              class="btn-secondary text-center">Download CV</a>
+              class="btn-secondary text-center">Download Resume</a>
           ) : (
             <button onclick="window.print()" class="btn-secondary text-center">Print Resume</button>
           )}
@@ -144,22 +150,6 @@ const hasPortrait =
             ))
           }
         </div>
-        {hasPortrait && (
-          <div
-            class="portrait-peek-wrapper reveal"
-            aria-hidden="true"
-            style="transition-delay: 0.65s;"
-          >
-            <img
-              src={withBase(personalData.photo)}
-              alt={personalData.photoAlt ?? ''}
-              class="portrait-peek-img"
-              loading="lazy"
-              width="280"
-              height="350"
-            />
-          </div>
-        )}
       </div>
 
       <div
@@ -205,11 +195,12 @@ const hasPortrait =
             <div class="pf-body">
               <div class="relative w-full h-full">
                 {
-                  featuredProjects.map((project, i) => (
+                  allSlides.map((project, i) => (
                     <div
                       class="hero-slide absolute inset-0 flex items-center justify-center p-3 transition-[transform,opacity] duration-700 ease-in-out"
                       data-index={i}
                       data-project-index={projectsData.findIndex((p) => p.title === project.title)}
+                      data-link={(project as any).link ?? ''}
                       style={
                         i === 0
                           ? 'transform:translateX(0);opacity:1;'
@@ -241,7 +232,7 @@ const hasPortrait =
 
               <div class="absolute top-2 left-0 right-0 flex justify-center gap-1.5 z-30">
                 {
-                  featuredProjects.map((_, i) => (
+                  allSlides.map((_, i) => (
                     <button
                       class="slider-dot w-1.5 h-1.5 transition-[background-color,width] duration-300"
                       data-dot={i}
@@ -286,7 +277,7 @@ const hasPortrait =
 
             <div class="pf-badge">
               {
-                featuredProjects.map((project, i) => (
+                allSlides.map((project, i) => (
                   <div
                     class="hero-badge-icon absolute inset-0 flex items-center justify-center transition-[opacity,transform] duration-500"
                     data-badge={i}
@@ -310,7 +301,7 @@ const hasPortrait =
 
             <div class="pf-counter">
               <span class="font-mono text-sm font-bold slider-counter" style="color: #8fa8c8;"
-                >1 / {featuredProjects.length}</span
+                >1 / {allSlides.length}</span
               >
             </div>
           </article>
@@ -1108,16 +1099,18 @@ const hasPortrait =
 
   if (total > 0) resetTimer();
 
-  // Clicking a hero slide opens the matching project card modal in Projects.astro.
-  // data-project-index maps hero slides to their original index in the full projects list.
   slides.forEach((slide) => {
     slide.addEventListener('click', (e: MouseEvent) => {
       if ((e.target as HTMLElement).closest('button')) return;
       const idx = (slide as HTMLElement).dataset.projectIndex;
-      // Grid layout: click opens the project modal
+      const directLink = (slide as HTMLElement).dataset.link;
+      // Competition slides have no matching project card: navigate to case study page.
+      if (directLink && (idx === '-1' || idx === undefined)) {
+        window.location.href = directLink;
+        return;
+      }
       const gridCard = document.querySelector<HTMLElement>(`.project-card[data-index="${idx}"]`);
       if (gridCard) { gridCard.click(); return; }
-      // Showcase layout: scroll to the matching feature card
       document.querySelector<HTMLElement>(`.project-feature[data-index="${idx}"]`)
         ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });

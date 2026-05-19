@@ -1,0 +1,112 @@
+---
+import CaseStudy from '../../components/CaseStudy.astro';
+---
+
+<CaseStudy
+  title="Rear Double Wishbone Suspension FEA"
+  description="Static structural analysis of a rear double wishbone suspension assembly in SolidWorks Simulation. Analytical hand calculations, spring element modeling, and mesh convergence study. Solo project, MEGN 324, Spring 2026."
+  backHref="/#projects"
+  backLabel="Back to Projects"
+  eyebrow="MEGN 324 Final Project"
+>
+
+  <h2>Problem</h2>
+  <p>
+    Verify structural integrity of a rear double wishbone suspension assembly under representative
+    cornering and braking loads using static finite element analysis. The goal was to validate
+    stress and displacement results against analytical hand calculations and assess factor of safety
+    across the assembly.
+  </p>
+
+  <h2>Approach</h2>
+  <p>
+    Three part study combining hand calculations, finite element analysis, and mesh refinement.
+  </p>
+  <ul>
+    <li>
+      <strong>Phase 1 (Analytical):</strong> Free body diagram of the 6-body assembly (lower arm,
+      upper arm, knuckle, shock clamp, plunger, tube). Pin reaction forces solved analytically before
+      any FEA to establish expected results.
+    </li>
+    <li>
+      <strong>Phase 2 (Full assembly FEA):</strong> Applied loads of 35 lbf horizontal and 65 lbf
+      vertical at the knuckle. Modeled the shock absorber as both a fixed constraint and a spring
+      element (k = 800 lbf/in) to compare displacement response.
+    </li>
+    <li>
+      <strong>Phase 3 (Mesh convergence):</strong> Refined mesh on the lower arm to 134,000 nodes
+      to confirm stress convergence and determine local factor of safety under higher-fidelity
+      conditions.
+    </li>
+  </ul>
+  <p>
+    <strong>Materials:</strong> AISI 4340 normalized steel for control arms (yield strength 145 ksi),
+    cast carbon steel for knuckle and shock components.
+  </p>
+  <p>
+    <strong>Pin reactions (analytical):</strong> A = 118.3 lbf, B = 131.5 lbf, C = 66.5 lbf,
+    D = 49.0 lbf, E = 131.5 lbf, G = 49.0 lbf.
+  </p>
+
+  <h2>Results</h2>
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th>Study</th>
+        <th>Peak von Mises</th>
+        <th>Max y-displacement</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Fixed shock (full assembly)</td>
+        <td class="mono">22.9 ksi</td>
+        <td class="mono">0.00546 in</td>
+      </tr>
+      <tr>
+        <td>Spring shock (k = 800 lbf/in)</td>
+        <td class="mono">22.9 ksi</td>
+        <td class="mono">0.586 in</td>
+      </tr>
+      <tr>
+        <td>Lower arm, refined mesh (134k nodes)</td>
+        <td class="mono">66.5 ksi</td>
+        <td class="mono">0.421 in</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Assembly factor of safety: approximately 6.3 (22.9 ksi vs. 145 ksi yield strength).
+    Lower arm local minimum factor of safety: 1.55 under refined mesh conditions.
+    Peak sigma x in fixed and spring studies: 18.9 ksi (compression).
+  </p>
+
+  <h2>My Role</h2>
+  <p>
+    Solo project. All hand calculations, SolidWorks 3D assembly, simulation setup, mesh convergence
+    study, and written technical report were completed independently.
+  </p>
+
+  <h2>Reference Material</h2>
+  <div class="ref-links">
+    <a href="/documents/fea-report.pdf" class="ref-link" target="_blank" rel="noopener">
+      <svg viewBox="0 0 20 20" fill="none" class="w-4 h-4" aria-hidden="true">
+        <path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Full Technical Report (PDF)
+    </a>
+  </div>
+
+  <h2>Skills Demonstrated</h2>
+  <div class="skill-tags">
+    <span class="skill-tag">FEA</span>
+    <span class="skill-tag">SolidWorks Simulation</span>
+    <span class="skill-tag">Structural Analysis</span>
+    <span class="skill-tag">Mesh Convergence</span>
+    <span class="skill-tag">Hand Calculations</span>
+    <span class="skill-tag">AISI 4340</span>
+    <span class="skill-tag">Factor of Safety</span>
+    <span class="skill-tag">Technical Report Writing</span>
+  </div>
+
+</CaseStudy>

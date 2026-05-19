@@ -13,9 +13,9 @@ import personalData from '../data/personal.json';
       </div>
 
       <div class="card reveal" style="transition-delay: 0.15s;">
-        <p class="text-lg text-slate-300 leading-relaxed">
-          {personalData.aboutLong}
-        </p>
+        {personalData.aboutLong.split('\n\n').map((para) => (
+          <p class="text-lg text-slate-300 leading-relaxed mb-4 last:mb-0">{para}</p>
+        ))}
 
         <hr class="gradient-divider my-8" />
 

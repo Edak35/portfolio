@@ -10,9 +10,8 @@ import sitemap from '@astrojs/sitemap';
 //       https://docs.astro.build/en/reference/configuration-reference/#trailingslash
 
 export default defineConfig({
-  // SITE_URL and BASE_PATH are injected by Docker / CI; defaults keep local dev working without env vars.
-  site: process.env.SITE_URL || 'https://www.example.com',
-  base: process.env.BASE_PATH || '/',
+  site: 'https://cadekaminski.com',
+  base: '/',
   trailingSlash: 'never',
   build: { format: 'file' },
   vite: {
@@ -24,7 +23,7 @@ export default defineConfig({
   // which is more predictable when targeting elements from global CSS or JavaScript.
   scopedStyleStrategy: 'attribute',
   integrations: [
-    ...(process.env.SITE_URL ? [sitemap()] : []),
+    sitemap(),
   ],
   // Global Sharp codec defaults for all processed images.
   // Per-image `quality` props still override these.
